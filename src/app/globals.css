@@ -1,0 +1,54 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #0F1117;
+  --bg-card: #1C1E2E;
+  --bg-card-hover: #232540;
+  --border: #2A2D3E;
+  --text-primary: #F0F2FF;
+  --text-secondary: #8B90A7;
+  --text-muted: #5A5F7A;
+  --accent-red: #E31837;
+  --up: #34D399;
+  --down: #F87171;
+  --blue: #1D6FEB;
+  --green: #00C49F;
+  --orange: #FF6B35;
+  --sidebar-w: 220px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* 사이드바 레이아웃 */
+.layout-sidebar { display: none; }
+.layout-mobile-tabs { display: block; }
+.layout-main { margin-left: 0; }
+
+@media (min-width: 768px) {
+  .layout-sidebar { display: flex; }
+  .layout-mobile-tabs { display: none; }
+  .layout-main { margin-left: var(--sidebar-w); }
+}
+
+/* ── 인쇄 전용 ──────────────────────────────────────────────── */
+@media print {
+  .no-print { display: none !important; }
+  .layout-sidebar, .layout-mobile-tabs { display: none !important; }
+  .layout-main { margin-left: 0 !important; }
+  body { background: #fff !important; color: #111 !important; }
+}
