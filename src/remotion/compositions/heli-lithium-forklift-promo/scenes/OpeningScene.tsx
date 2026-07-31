@@ -3,8 +3,7 @@ import { Background } from "../components/Background";
 import { HeliLogo } from "../components/HeliLogo";
 import { fontFamily, palette } from "../theme";
 
-export const OpeningScene: React.FC<{ brandName: string; brandSub: string; headline: string }> = ({
-  brandName,
+export const OpeningScene: React.FC<{ brandSub: string; headline: string }> = ({
   brandSub,
   headline,
 }) => {
@@ -29,7 +28,7 @@ export const OpeningScene: React.FC<{ brandName: string; brandSub: string; headl
       <Background />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 60 }}>
         <div style={{ opacity: logoOpacity, transform: `scale(${0.7 + logoScale * 0.3})` }}>
-          <HeliLogo name={brandName} sub={brandSub} />
+          <HeliLogo sub={brandSub} />
         </div>
         <div
           style={{

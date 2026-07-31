@@ -20,7 +20,6 @@ export type FeatureSpec = {
 };
 
 export type HeliPromoProps = {
-  brandName: string;
   brandSub: string;
   headline: string;
   problems: string[];
@@ -32,7 +31,6 @@ export type HeliPromoProps = {
 };
 
 export const defaultHeliPromoProps: HeliPromoProps = {
-  brandName: "HELI",
   brandSub: "헬리코리아",
   headline: "저공해, 저소음.\n친환경 지게차의 기준",
   problems: ["매연 배출", "소음 공해", "높은 연료비"],

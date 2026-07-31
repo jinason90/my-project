@@ -1,9 +1,10 @@
+import { Img, staticFile } from "remotion";
 import { fontFamily, palette } from "../theme";
 
-export const HeliLogo: React.FC<{ name: string; sub: string; scale?: number }> = ({
-  name,
+export const HeliLogo: React.FC<{ sub: string; scale?: number; width?: number }> = ({
   sub,
   scale = 1,
+  width = 420,
 }) => (
   <div
     style={{
@@ -13,19 +14,7 @@ export const HeliLogo: React.FC<{ name: string; sub: string; scale?: number }> =
       transform: `scale(${scale})`,
     }}
   >
-    <div
-      style={{
-        fontSize: 110,
-        fontWeight: 900,
-        color: palette.white,
-        letterSpacing: 4,
-        lineHeight: 1,
-        fontFamily,
-      }}
-    >
-      <span style={{ color: palette.red }}>{name.slice(0, 2)}</span>
-      {name.slice(2)}
-    </div>
+    <Img src={staticFile("remotion/heli-lithium-forklift-promo/heli-logo.png")} style={{ width }} />
     <div
       style={{
         marginTop: 10,

@@ -4,12 +4,11 @@ import { HeliLogo } from "../components/HeliLogo";
 import { fontFamily, palette } from "../theme";
 
 export const ClosingScene: React.FC<{
-  brandName: string;
   brandSub: string;
   ctaText: string;
   contact: string;
   durationInFrames: number;
-}> = ({ brandName, brandSub, ctaText, contact, durationInFrames }) => {
+}> = ({ brandSub, ctaText, contact, durationInFrames }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const logoScale = spring({ frame, fps, config: { damping: 12 } });
@@ -31,7 +30,7 @@ export const ClosingScene: React.FC<{
       <Background />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 44 }}>
         <div style={{ transform: `scale(${0.8 + logoScale * 0.2})` }}>
-          <HeliLogo name={brandName} sub={brandSub} />
+          <HeliLogo sub={brandSub} />
         </div>
         <div
           style={{

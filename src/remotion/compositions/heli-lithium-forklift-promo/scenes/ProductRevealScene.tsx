@@ -1,6 +1,5 @@
-import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Background } from "../components/Background";
-import { ForkliftSilhouette } from "../components/ForkliftSilhouette";
 import { fontFamily, palette } from "../theme";
 
 export const ProductRevealScene: React.FC<{ productName: string }> = ({ productName }) => {
@@ -31,10 +30,21 @@ export const ProductRevealScene: React.FC<{ productName: string }> = ({ productN
           style={{
             opacity: silhouetteOpacity,
             transform: `translateX(${(1 - slide) * -120}px) scale(${0.85 + slide * 0.15})`,
-            filter: `drop-shadow(0 0 60px ${palette.redGlow})`,
           }}
         >
-          <ForkliftSilhouette width={520} height={320} />
+          <div
+            style={{
+              background: palette.white,
+              borderRadius: 32,
+              padding: 28,
+              boxShadow: `0 30px 80px rgba(0,0,0,0.45), 0 0 70px ${palette.redGlow}`,
+            }}
+          >
+            <Img
+              src={staticFile("remotion/heli-lithium-forklift-promo/lithium-forklift-hero.jpg")}
+              style={{ width: 760, display: "block" }}
+            />
+          </div>
         </div>
         <div style={{ fontSize: 56, fontWeight: 900, color: palette.white, fontFamily, minHeight: 70 }}>
           {shownName}
