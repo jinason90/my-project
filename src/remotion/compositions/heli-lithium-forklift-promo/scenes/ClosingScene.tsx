@@ -35,7 +35,7 @@ export const ClosingScene: React.FC<{
         <div
           style={{
             opacity: ctaOpacity,
-            fontSize: 42,
+            fontSize: 54,
             fontWeight: 800,
             color: palette.white,
             textAlign: "center",
@@ -48,7 +48,7 @@ export const ClosingScene: React.FC<{
         <div
           style={{
             opacity: contactOpacity,
-            fontSize: 30,
+            fontSize: 36,
             fontWeight: 600,
             color: palette.red,
             letterSpacing: 2,

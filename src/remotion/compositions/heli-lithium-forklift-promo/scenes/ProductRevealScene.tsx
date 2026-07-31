@@ -1,12 +1,13 @@
-import { AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Background } from "../components/Background";
+import { CutoutImage } from "../components/CutoutImage";
 import { fontFamily, palette } from "../theme";
 
 export const ProductRevealScene: React.FC<{ productName: string }> = ({ productName }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const slide = spring({ frame, fps, config: { damping: 16, mass: 0.8 } });
-  const silhouetteOpacity = interpolate(frame, [0, 20], [0, 1], {
+  const imageOpacity = interpolate(frame, [0, 20], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -25,28 +26,20 @@ export const ProductRevealScene: React.FC<{ productName: string }> = ({ productN
   return (
     <AbsoluteFill>
       <Background />
-      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 50 }}>
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 40 }}>
         <div
           style={{
-            opacity: silhouetteOpacity,
+            opacity: imageOpacity,
             transform: `translateX(${(1 - slide) * -120}px) scale(${0.85 + slide * 0.15})`,
           }}
         >
-          <div
-            style={{
-              background: palette.white,
-              borderRadius: 32,
-              padding: 28,
-              boxShadow: `0 30px 80px rgba(0,0,0,0.45), 0 0 70px ${palette.redGlow}`,
-            }}
-          >
-            <Img
-              src={staticFile("remotion/heli-lithium-forklift-promo/lithium-forklift-hero.jpg")}
-              style={{ width: 760, display: "block" }}
-            />
-          </div>
+          <CutoutImage
+            src={staticFile("remotion/heli-lithium-forklift-promo/lithium-forklift-hero.jpg")}
+            filterId="product-reveal-cutout"
+            style={{ width: 880, display: "block", filter: `url(#product-reveal-cutout) drop-shadow(0 40px 50px rgba(0,0,0,0.55))` }}
+          />
         </div>
-        <div style={{ fontSize: 56, fontWeight: 900, color: palette.white, fontFamily, minHeight: 70 }}>
+        <div style={{ fontSize: 72, fontWeight: 900, color: palette.white, fontFamily, minHeight: 90 }}>
           {shownName}
           <span style={{ opacity: cursorVisible ? 1 : 0, color: palette.red }}>|</span>
         </div>

@@ -12,7 +12,11 @@ export const HeliLithiumForkliftPromo: React.FC<HeliPromoProps> = (props) => {
   return (
     <AbsoluteFill style={{ backgroundColor: palette.black }}>
       <Sequence from={SCENES.opening.from} durationInFrames={SCENES.opening.duration}>
-        <OpeningScene brandSub={props.brandSub} headline={props.headline} />
+        <OpeningScene
+          brandSub={props.brandSub}
+          headlineKicker={props.headlineKicker}
+          headlinePunch={props.headlinePunch}
+        />
       </Sequence>
       <Sequence from={SCENES.problem.from} durationInFrames={SCENES.problem.duration}>
         <ProblemScene problems={props.problems} />

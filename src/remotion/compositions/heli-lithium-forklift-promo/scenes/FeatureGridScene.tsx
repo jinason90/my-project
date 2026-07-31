@@ -15,7 +15,7 @@ export const FeatureGridScene: React.FC<{ features: FeatureSpec[] }> = ({ featur
     <AbsoluteFill>
       <Background />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 40, padding: "0 60px" }}>
-        <div style={{ opacity: titleOpacity, fontSize: 32, fontWeight: 700, color: palette.gray, fontFamily }}>
+        <div style={{ opacity: titleOpacity, fontSize: 40, fontWeight: 700, color: palette.white, fontFamily }}>
           이런 것도 가능해요
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, width: "100%" }}>

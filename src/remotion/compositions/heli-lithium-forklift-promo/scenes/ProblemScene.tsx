@@ -13,7 +13,7 @@ export const ProblemScene: React.FC<{ problems: string[] }> = ({ problems }) => 
     <AbsoluteFill>
       <Background />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 36, padding: "0 80px" }}>
-        <div style={{ opacity: titleOpacity, fontSize: 34, fontWeight: 700, color: palette.gray, fontFamily }}>
+        <div style={{ opacity: titleOpacity, fontSize: 42, fontWeight: 700, color: palette.gray, fontFamily }}>
           기존 엔진 지게차는…
         </div>
         {problems.map((problem, i) => {
@@ -42,7 +42,7 @@ export const ProblemScene: React.FC<{ problems: string[] }> = ({ problems }) => 
                 position: "relative",
                 opacity: itemOpacity,
                 transform: `translateX(${itemX}px)`,
-                fontSize: 46,
+                fontSize: 62,
                 fontWeight: 800,
                 color: palette.white,
                 fontFamily,
@@ -54,26 +54,26 @@ export const ProblemScene: React.FC<{ problems: string[] }> = ({ problems }) => 
                   position: "absolute",
                   left: 0,
                   top: "50%",
-                  height: 4,
+                  height: 5,
                   width: `${strike * 100}%`,
                   background: palette.red,
                   transform: "translateY(-50%)",
                 }}
               />
               <svg
-                width="36"
-                height="36"
+                width="46"
+                height="46"
                 viewBox="0 0 24 24"
                 style={{
                   position: "absolute",
-                  right: -50,
+                  right: -60,
                   top: "50%",
                   transform: "translateY(-50%)",
                   opacity: xOpacity,
                 }}
               >
-                <line x1="4" y1="4" x2="20" y2="20" stroke={palette.red} strokeWidth={3} strokeLinecap="round" />
-                <line x1="20" y1="4" x2="4" y2="20" stroke={palette.red} strokeWidth={3} strokeLinecap="round" />
+                <line x1="4" y1="4" x2="20" y2="20" stroke={palette.red} strokeWidth={3.5} strokeLinecap="round" />
+                <line x1="20" y1="4" x2="4" y2="20" stroke={palette.red} strokeWidth={3.5} strokeLinecap="round" />
               </svg>
             </div>
           );

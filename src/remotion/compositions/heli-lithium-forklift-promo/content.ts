@@ -21,7 +21,8 @@ export type FeatureSpec = {
 
 export type HeliPromoProps = {
   brandSub: string;
-  headline: string;
+  headlineKicker: string[];
+  headlinePunch: string;
   problems: string[];
   productName: string;
   heroSpecs: HeroSpec[];
@@ -32,7 +33,8 @@ export type HeliPromoProps = {
 
 export const defaultHeliPromoProps: HeliPromoProps = {
   brandSub: "헬리코리아",
-  headline: "저공해, 저소음.\n친환경 지게차의 기준",
+  headlineKicker: ["매연 없이 [[저공해]]로", "소음 없이 [[저소음]]으로"],
+  headlinePunch: "친환경 지게차의 기준",
   problems: ["매연 배출", "소음 공해", "높은 연료비"],
   productName: "헬리 리튬전동지게차",
   heroSpecs: [

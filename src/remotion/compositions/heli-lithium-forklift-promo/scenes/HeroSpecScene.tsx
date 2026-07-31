@@ -1,5 +1,6 @@
-import { AbsoluteFill, interpolate, Series, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, interpolate, Series, useCurrentFrame } from "remotion";
 import { Background } from "../components/Background";
+import { CircularGauge } from "../components/CircularGauge";
 import { CountUp } from "../components/CountUp";
 import { Icon } from "../components/Icon";
 import type { HeroSpec } from "../content";
@@ -10,8 +11,6 @@ const HeroSpecSlide: React.FC<{ spec: HeroSpec; durationInFrames: number }> = ({
   durationInFrames,
 }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const scale = spring({ frame, fps, config: { damping: 14 } });
   const opacity = interpolate(frame, [0, 15], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -25,21 +24,24 @@ const HeroSpecSlide: React.FC<{ spec: HeroSpec; durationInFrames: number }> = ({
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: opacity * exitOpacity }}>
       <div
         style={{
-          transform: `scale(${0.85 + scale * 0.15})`,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 20,
-          padding: "0 70px",
+          gap: 28,
+          padding: "0 60px",
           textAlign: "center",
         }}
       >
-        <Icon name={spec.icon} size={70} color={palette.red} />
-        <div style={{ fontSize: 30, fontWeight: 700, color: palette.gray, fontFamily }}>{spec.label}</div>
-        <div style={{ fontSize: 140, fontWeight: 900, color: palette.white, fontFamily, lineHeight: 1 }}>
-          <CountUp to={spec.value} suffix={spec.suffix} startFrame={10} durationInFrames={35} />
-        </div>
-        {spec.sublabel && <div style={{ fontSize: 24, color: palette.gray, fontFamily }}>{spec.sublabel}</div>}
+        <div style={{ fontSize: 38, fontWeight: 800, color: palette.white, fontFamily }}>{spec.label}</div>
+        <CircularGauge size={460} startFrame={8} durationInFrames={40}>
+          <Icon name={spec.icon} size={54} color={palette.red} />
+          <div style={{ fontSize: 128, fontWeight: 900, color: palette.white, fontFamily, lineHeight: 1, marginTop: 8 }}>
+            <CountUp to={spec.value} suffix={spec.suffix} startFrame={10} durationInFrames={35} />
+          </div>
+        </CircularGauge>
+        {spec.sublabel && (
+          <div style={{ fontSize: 28, fontWeight: 500, color: palette.gray, fontFamily }}>{spec.sublabel}</div>
+        )}
       </div>
     </AbsoluteFill>
   );

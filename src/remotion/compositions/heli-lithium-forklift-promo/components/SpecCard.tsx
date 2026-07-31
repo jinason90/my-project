@@ -24,18 +24,18 @@ export const SpecCard: React.FC<{ icon: SpecIconName; label: string; delay: numb
         background: "rgba(255,255,255,0.05)",
         border: "1px solid rgba(255,255,255,0.12)",
         borderRadius: 24,
-        padding: "28px 20px",
+        padding: "32px 20px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 14,
+        gap: 16,
         textAlign: "center",
       }}
     >
-      <Icon name={icon} size={48} color={palette.red} />
+      <Icon name={icon} size={56} color={palette.red} />
       <div
         style={{
-          fontSize: 26,
+          fontSize: 32,
           fontWeight: 700,
           color: palette.white,
           lineHeight: 1.3,
