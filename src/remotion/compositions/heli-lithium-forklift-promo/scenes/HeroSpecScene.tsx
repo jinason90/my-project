@@ -1,4 +1,4 @@
-import { AbsoluteFill, interpolate, Series, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, interpolate, Series, staticFile, useCurrentFrame } from "remotion";
 import { Background } from "../components/Background";
 import { CircularGauge } from "../components/CircularGauge";
 import { CountUp } from "../components/CountUp";
@@ -22,6 +22,19 @@ const HeroSpecSlide: React.FC<{ spec: HeroSpec; durationInFrames: number }> = ({
 
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: opacity * exitOpacity }}>
+      {spec.icon === "charge" && (
+        <Img
+          src={staticFile("remotion/heli-lithium-forklift-promo/prop-charging-station.png")}
+          style={{
+            position: "absolute",
+            bottom: 120,
+            right: -60,
+            width: 420,
+            opacity: 0.35,
+            filter: "blur(3px)",
+          }}
+        />
+      )}
       <div
         style={{
           display: "flex",

@@ -1,16 +1,15 @@
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Img, staticFile } from "remotion";
 import { palette } from "../theme";
 
 export const Background: React.FC = () => (
-  <AbsoluteFill
-    style={{
-      background: `radial-gradient(circle at 50% 20%, ${palette.redGlow}, transparent 55%), linear-gradient(180deg, ${palette.black} 0%, ${palette.charcoal} 60%, ${palette.black} 100%)`,
-    }}
-  >
+  <AbsoluteFill>
+    <Img
+      src={staticFile("remotion/heli-lithium-forklift-promo/bg-studio.png")}
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+    />
     <AbsoluteFill
       style={{
-        backgroundImage:
-          "repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 40px)",
+        background: `radial-gradient(circle at 50% 18%, ${palette.redGlow}, transparent 50%), linear-gradient(180deg, rgba(6,6,6,0.55) 0%, rgba(6,6,6,0.25) 35%, rgba(6,6,6,0.55) 75%, rgba(6,6,6,0.9) 100%)`,
       }}
     />
   </AbsoluteFill>
