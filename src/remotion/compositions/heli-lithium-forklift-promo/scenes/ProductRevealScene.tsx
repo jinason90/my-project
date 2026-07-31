@@ -1,9 +1,13 @@
 import { AbsoluteFill, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Background } from "../components/Background";
+import { BracketText } from "../components/BracketText";
 import { CutoutImage } from "../components/CutoutImage";
 import { fontFamily, palette } from "../theme";
 
-export const ProductRevealScene: React.FC<{ productName: string }> = ({ productName }) => {
+export const ProductRevealScene: React.FC<{ productKicker: string; productHeadline: string }> = ({
+  productKicker,
+  productHeadline,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const slide = spring({ frame, fps, config: { damping: 16, mass: 0.8 } });
@@ -11,39 +15,60 @@ export const ProductRevealScene: React.FC<{ productName: string }> = ({ productN
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-
-  const typingStart = 45;
-  const perChar = 2.5;
-  const chars = Math.floor(
-    interpolate(frame, [typingStart, typingStart + productName.length * perChar], [0, productName.length], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    })
-  );
-  const shownName = productName.slice(0, chars);
-  const cursorVisible = Math.floor(frame / 8) % 2 === 0 && chars < productName.length;
+  const kickerOpacity = interpolate(frame, [0, 15], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const headlineOpacity = interpolate(frame, [18, 38], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const headlineScale = interpolate(frame, [18, 38], [0.9, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
 
   return (
     <AbsoluteFill>
       <Background />
-      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 40 }}>
-        <div
-          style={{
-            opacity: imageOpacity,
-            transform: `translateX(${(1 - slide) * -120}px) scale(${0.85 + slide * 0.15})`,
-          }}
-        >
-          <CutoutImage
-            src={staticFile("remotion/heli-lithium-forklift-promo/lithium-forklift-hero.jpg")}
-            filterId="product-reveal-cutout"
-            style={{ width: 880, display: "block", filter: `url(#product-reveal-cutout) drop-shadow(0 40px 50px rgba(0,0,0,0.55))` }}
-          />
-        </div>
-        <div style={{ fontSize: 72, fontWeight: 900, color: palette.white, fontFamily, minHeight: 90 }}>
-          {shownName}
-          <span style={{ opacity: cursorVisible ? 1 : 0, color: palette.red }}>|</span>
-        </div>
-      </AbsoluteFill>
+      <div style={{ position: "absolute", top: 150, left: 0, right: 0, textAlign: "center", opacity: kickerOpacity }}>
+        <BracketText text={productKicker} size={34} weight={700} />
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 250,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          opacity: headlineOpacity,
+          transform: `scale(${headlineScale})`,
+          fontSize: 64,
+          fontWeight: 900,
+          color: palette.white,
+          fontFamily,
+        }}
+      >
+        {productHeadline}
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 140,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+          opacity: imageOpacity,
+          transform: `translateX(${(1 - slide) * -120}px) scale(${0.85 + slide * 0.15})`,
+        }}
+      >
+        <CutoutImage
+          src={staticFile("remotion/heli-lithium-forklift-promo/lithium-forklift-hero.jpg")}
+          filterId="product-reveal-cutout"
+          style={{ width: 880, display: "block", filter: `url(#product-reveal-cutout) drop-shadow(0 40px 50px rgba(0,0,0,0.55))` }}
+        />
+      </div>
     </AbsoluteFill>
   );
 };

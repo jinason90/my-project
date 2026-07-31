@@ -14,16 +14,38 @@ export const FeatureGridScene: React.FC<{ features: FeatureSpec[] }> = ({ featur
   return (
     <AbsoluteFill>
       <Background />
-      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 40, padding: "0 60px" }}>
-        <div style={{ opacity: titleOpacity, fontSize: 40, fontWeight: 700, color: palette.white, fontFamily }}>
-          이런 것도 가능해요
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, width: "100%" }}>
-          {features.map((feature, i) => (
-            <SpecCard key={feature.label} icon={feature.icon} label={feature.label} delay={20 + i * 12} />
-          ))}
-        </div>
-      </AbsoluteFill>
+      <div
+        style={{
+          position: "absolute",
+          top: 150,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          opacity: titleOpacity,
+          fontSize: 30,
+          fontWeight: 700,
+          color: palette.white,
+          fontFamily,
+        }}
+      >
+        이런 것도 가능해요
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 280,
+          left: 0,
+          right: 0,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 20,
+          padding: "0 60px",
+        }}
+      >
+        {features.map((feature, i) => (
+          <SpecCard key={feature.label} icon={feature.icon} label={feature.label} delay={20 + i * 12} />
+        ))}
+      </div>
     </AbsoluteFill>
   );
 };

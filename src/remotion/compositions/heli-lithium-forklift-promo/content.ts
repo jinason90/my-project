@@ -24,7 +24,8 @@ export type HeliPromoProps = {
   headlineKicker: string[];
   headlinePunch: string;
   problems: string[];
-  productName: string;
+  productKicker: string;
+  productHeadline: string;
   heroSpecs: HeroSpec[];
   featureSpecs: FeatureSpec[];
   ctaText: string;
@@ -36,7 +37,8 @@ export const defaultHeliPromoProps: HeliPromoProps = {
   headlineKicker: ["매연 없이 [[저공해]]로", "소음 없이 [[저소음]]으로"],
   headlinePunch: "친환경 지게차의 기준",
   problems: ["매연 배출", "소음 공해", "높은 연료비"],
-  productName: "헬리 리튬전동지게차",
+  productKicker: "단 [[60분]] 급속충전",
+  productHeadline: "충전 완료",
   heroSpecs: [
     {
       icon: "charge",

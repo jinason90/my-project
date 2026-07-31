@@ -36,39 +36,49 @@ export const OpeningScene: React.FC<{
   return (
     <AbsoluteFill>
       <Background />
-      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 56, padding: "0 64px" }}>
+      <div style={{ position: "absolute", top: 110, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
         <div style={{ opacity: logoOpacity, transform: `scale(${0.7 + logoScale * 0.3})` }}>
-          <HeliLogo sub={brandSub} />
+          <HeliLogo sub={brandSub} scale={0.85} />
         </div>
-        <div
-          style={{
-            opacity: kickerOpacity,
-            transform: `translateY(${kickerY}px)`,
-            display: "flex",
-            flexDirection: "column",
-            gap: 10,
-            textAlign: "center",
-          }}
-        >
-          {headlineKicker.map((line) => (
-            <BracketText key={line} text={line} size={44} weight={700} />
-          ))}
-        </div>
-        <div
-          style={{
-            opacity: punchOpacity,
-            transform: `scale(${punchScale})`,
-            fontSize: 86,
-            fontWeight: 900,
-            color: palette.white,
-            textAlign: "center",
-            lineHeight: 1.25,
-            fontFamily,
-          }}
-        >
-          {headlinePunch}
-        </div>
-      </AbsoluteFill>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 430,
+          left: 0,
+          right: 0,
+          opacity: kickerOpacity,
+          transform: `translateY(${kickerY}px)`,
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+          alignItems: "center",
+          padding: "0 64px",
+        }}
+      >
+        {headlineKicker.map((line) => (
+          <BracketText key={line} text={line} size={34} weight={700} />
+        ))}
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: 0,
+          right: 0,
+          transform: `translateY(-50%) scale(${punchScale})`,
+          opacity: punchOpacity,
+          fontSize: 86,
+          fontWeight: 900,
+          color: palette.white,
+          textAlign: "center",
+          lineHeight: 1.25,
+          padding: "0 56px",
+          fontFamily,
+        }}
+      >
+        {headlinePunch}
+      </div>
     </AbsoluteFill>
   );
 };

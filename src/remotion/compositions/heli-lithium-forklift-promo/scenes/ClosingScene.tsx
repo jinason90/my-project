@@ -29,13 +29,13 @@ export const ClosingScene: React.FC<{
     <AbsoluteFill style={{ opacity: fadeOut }}>
       <Background />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 44 }}>
-        <div style={{ transform: `scale(${0.8 + logoScale * 0.2})` }}>
+        <div style={{ transform: `scale(${(0.8 + logoScale * 0.2) * 0.9})` }}>
           <HeliLogo sub={brandSub} />
         </div>
         <div
           style={{
             opacity: ctaOpacity,
-            fontSize: 54,
+            fontSize: 46,
             fontWeight: 800,
             color: palette.white,
             textAlign: "center",
@@ -48,7 +48,7 @@ export const ClosingScene: React.FC<{
         <div
           style={{
             opacity: contactOpacity,
-            fontSize: 36,
+            fontSize: 32,
             fontWeight: 600,
             color: palette.red,
             letterSpacing: 2,

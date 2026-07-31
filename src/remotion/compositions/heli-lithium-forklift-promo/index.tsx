@@ -22,7 +22,7 @@ export const HeliLithiumForkliftPromo: React.FC<HeliPromoProps> = (props) => {
         <ProblemScene problems={props.problems} />
       </Sequence>
       <Sequence from={SCENES.product.from} durationInFrames={SCENES.product.duration}>
-        <ProductRevealScene productName={props.productName} />
+        <ProductRevealScene productKicker={props.productKicker} productHeadline={props.productHeadline} />
       </Sequence>
       <Sequence from={SCENES.heroSpecs.from} durationInFrames={SCENES.heroSpecs.duration}>
         <HeroSpecScene specs={props.heroSpecs} />

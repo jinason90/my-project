@@ -23,19 +23,19 @@ export const SpecCard: React.FC<{ icon: SpecIconName; label: string; delay: numb
         transform: `translateY(${(1 - entrance) * 30}px) scale(${0.9 + entrance * 0.1})`,
         background: "rgba(255,255,255,0.05)",
         border: "1px solid rgba(255,255,255,0.12)",
-        borderRadius: 24,
-        padding: "32px 20px",
+        borderRadius: 20,
+        padding: "26px 18px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 16,
+        gap: 12,
         textAlign: "center",
       }}
     >
-      <Icon name={icon} size={56} color={palette.red} />
+      <Icon name={icon} size={44} color={palette.red} />
       <div
         style={{
-          fontSize: 32,
+          fontSize: 24,
           fontWeight: 700,
           color: palette.white,
           lineHeight: 1.3,
